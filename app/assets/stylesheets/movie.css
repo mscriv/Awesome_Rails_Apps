@@ -1,0 +1,10 @@
+.movie_poster {
+  float: left;
+  padding-right: 10px;
+}
+
+
+.italicize {
+  font-style: italic;
+  font-size: 11px;
+}

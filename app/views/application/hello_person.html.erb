@@ -1,0 +1,18 @@
+<%= form_tag "/hello_person", method: 'post' do %>
+   <label for="name">Please enter your name: </label>
+   <input type="text" name="name"/>
+
+      <select name="greeting_type">
+        <option value='h'>Hello</option>
+        <option value='g'>Goodbye</option>
+      </select>
+
+
+         <input type="submit" value="Go"/>
+         <% end %> 
+
+       </form>
+
+      <% if params[:name].present? %>
+       <h1> Hello <%=  params[:name] %></h1>
+      <% end %>

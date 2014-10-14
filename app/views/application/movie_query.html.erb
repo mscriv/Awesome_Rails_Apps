@@ -1,0 +1,11 @@
+
+<p>
+<%= image_tag @movie['urlPoster'], alt: 'movie poster', class: 'movie_poster' %>
+</p>
+
+<h1 class="movie_title">
+  <%= link_to "#{@movie['title']}  (#{@movie['year']})", @movie['urlIMDB'] %>
+</h1>
+
+<p><%= @movie["plot"] %></p>
+<p class="italicize"><%= @movie['runtime'].first %></p>

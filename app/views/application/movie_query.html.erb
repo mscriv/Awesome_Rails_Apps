@@ -3,10 +3,10 @@
     <option value="title">Title</option>
     <option value="actor">Actor</option>
   </select>
+
     <input name="movie_query" type="text">
     <input type="submit" value="Submit">
 </form>
-
 
 <% if @movie %>
   <% if params[:search_type] == 'title' %>
@@ -17,7 +17,7 @@
         </a>
       </h1>
      <p><%= @movie['plot'] %></p>
-    <p style='font-style: italic'><%= @movie['runtime'].first %></p>
+    <p style='font-style: normal'><%= @movie['runtime'].first %></p>
 
   <% else params[:type] == 'actor' %>
     <img src='<%= @movie['urlPhoto'] %>' style='float: left; padding-right: 10px'>

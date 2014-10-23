@@ -1,34 +1,28 @@
-    class MovieController < ApplicationController
-
         require 'net/http'
-        require 'json'
 
-        QUERY_URL = "http://www.myapifilms.com/imdb"
+        class MovieController < ApplicationController
+          # Prevent CSRF attacks by raising an exception.
+          # For APIs, you may want to use :null_session instead.
+          protect_from_forgery with: :exception
 
-        layout 'application'
-=begin
-        def movie_query
+          QUERY_URL = 'http://www.myapifilms.com/imdb'
 
-          title = params[:title]
-          if title.present?
 
-            uri = URI(QUERY_URL + "?title=#{URI.escape(title)}")
-            raw_json = Net::HTTP.get_response(uri)
-
-            parsed_data = JSON.parse(raw_json)
-
-            @movie = parsed_data.first
-          end
-=end
           def movie_query
-            title = params[:title]
 
-            url = URI(QUERY_URL + "?title=#{URI.escape(title)}")
-            raw_json = Net::HTTP.get(url)
+            @movie_query = params[:movie_query]
 
-            search_result = JSON.parse(raw_json)
-            @movie = search_result.first
+            if @movie_query.present?
+
+              @uri = if params[:search_type] == 'title'
+                URI(QUERY_URL + "?title=#{URI.escape(@movie_query)}")
+              else params[:search_type] == 'actor'
+                URI(QUERY_URL + "?name=#{URI.escape(@movie_query)}")
+              end
+
+              @json = Net::HTTP.get(@uri)
+              @parsed_data = JSON.parse(@json)
+              @movie = @parsed_data.first
+            end
           end
-
-
-    end
+        end

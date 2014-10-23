@@ -1,11 +1,32 @@
+<form action="movie_query">
+  <select name="search_type">
+    <option value="title">Title</option>
+    <option value="actor">Actor</option>
+  </select>
+    <input name="movie_query" type="text">
+    <input type="submit" value="Submit">
+</form>
 
-<p>
-<%= image_tag @movie['urlPoster'], alt: 'movie poster', class: 'movie_poster' %>
-</p>
 
-<h1 class="movie_title">
-  <%= link_to "#{@movie['title']}  (#{@movie['year']})", @movie['urlIMDB'] %>
-</h1>
+<% if @movie %>
+  <% if params[:search_type] == 'title' %>
+    <img src='<%= @movie['urlPoster'] %>' style='float: left; padding-right: 10px'>
+      <h1>
+        <a href='<%= @movie['urlIMDB'] %>'>
+          <%= @movie['title'] %> (<%= @movie['year'] %>)
+        </a>
+      </h1>
+     <p><%= @movie['plot'] %></p>
+    <p style='font-style: italic'><%= @movie['runtime'].first %></p>
 
-<p><%= @movie["plot"] %></p>
-<p class="italicize"><%= @movie['runtime'].first %></p>
+  <% else params[:type] == 'actor' %>
+    <img src='<%= @movie['urlPhoto'] %>' style='float: left; padding-right: 10px'>
+    <h1>
+      <a href='<%= @movie['urlIMDB'] %>'>
+        <%= @movie['birthName'] %>
+        (<%= @movie['dateOfBirth'] %>)
+      </a>
+    </h1>
+    <p><%= @movie['bio'] %></p>
+  <% end %>
+<% end %>

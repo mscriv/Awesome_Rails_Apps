@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   match 'hello_person', to: 'application#hello_person', via: [:get, :post] #:all
 
   get 'pigatize', to: 'application#pigatize'
-  get 'movie_query', to: 'movie#movie_query'
+  match 'movie_query', to: 'movie#movie_query', via: [:get, :post]
   get 'rotten_query', to: 'rotten#rotten_query'
 
   # Example of regular route:

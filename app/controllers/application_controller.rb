@@ -9,9 +9,15 @@ class ApplicationController < ActionController::Base
 
 
     def hello_person
-      if params[:greeting_tyoe] == 'g'
+      cookies[:person_name] = params[:name] if params[:name]
+      cookies[:greeting_type] = params[:greeting_type] if params[:greeting_type]
+
+      @name = params[:name] || cookies[:person_name]
+      @gtype = params[:greeting_type]  || cookies[:greting_type]
+
+      if @gytpe == 'g'
         @greeting = 'Goodbye'
-      elsif params[:greeting_type] == 'h'
+      elsif @gtype == 'h'
         @greeting = 'Hello'
       else
         @greeting = 'Um...'

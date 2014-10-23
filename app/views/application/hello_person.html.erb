@@ -1,3 +1,11 @@
+
+      <% if params[:name].present? %>
+       <h1> Hello <%=  params[:name] %></h1>
+      <% end %>
+
+
+
+
 <%= form_tag "/hello_person", method: 'post' do %>
    <label for="name">Please enter your name: </label>
    <input type="text" name="name"/>
@@ -9,10 +17,6 @@
 
 
          <input type="submit" value="Go"/>
-         <% end %> 
+         <% end %>
 
        </form>
-
-      <% if params[:name].present? %>
-       <h1> Hello <%=  params[:name] %></h1>
-      <% end %>

@@ -8,14 +8,16 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'application#index'
+  root 'movie#movie_query'
   # get 'hello_person', to: 'application#hello_person'
   # post 'hello_person', to: 'application#hello_person'
 
   match 'hello_person', to: 'application#hello_person', via: [:get, :post] #:all
 
   get 'pigatize', to: 'application#pigatize'
-  match 'movie_query', to: 'movie#movie_query', via: [:get, :post]
+  #match 'movie_query', to: 'movie#movie_query', via: [:get, :post]
+  get 'movie_query', to: 'movie#movie_query'
+  post 'movie_query', to: 'movie#movie_query'
   get 'rotten_query', to: 'rotten#rotten_query'
 
   # Example of regular route:

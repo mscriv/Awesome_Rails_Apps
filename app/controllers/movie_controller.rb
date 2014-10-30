@@ -9,6 +9,11 @@
 
 
           def movie_query
+            if params[:remember_search]
+              cookies[:search_type]
+            else
+              cookies.delete(:search_type)
+            end
 
             @movie_query = params[:movie_query]
 

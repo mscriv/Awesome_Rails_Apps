@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       cookies[:greeting_type] = params[:greeting_type] if params[:greeting_type]
 
       @name = params[:name] || cookies[:person_name]
-      @gtype = params[:greeting_type]  || cookies[:greting_type]
+      @gtype = params[:greeting_type]  || cookies[:greeting_type]
 
       if @gytpe == 'g'
         @greeting = 'Goodbye'

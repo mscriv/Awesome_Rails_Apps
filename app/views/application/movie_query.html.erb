@@ -6,6 +6,10 @@
 
     <input name="movie_query" type="text">
     <input type="submit" value="Submit">
+  <div class = "field">
+    <%= label_tag :remember_search?%>
+    <%= check_box_tag :remember_search, 1, params[:remember_search] %>
+  </div>
 </form>
 
 

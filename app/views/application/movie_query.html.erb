@@ -1,3 +1,6 @@
+<html>
+<body style="background-color: #b0c4de">
+
 <%= form_tag('/movie_query', method: 'post') do %>
   <select name="search_type">
     <option value="title">Title</option>
@@ -19,16 +22,14 @@
 
         <%=image_tag(@movie['urlPoster']) %>
 
-            <h1>
+           <h1 style="font-family: cursive">
               <%= link_to(@movie['title'], @movie['urlIMDB']) %>
-            </h1>
-            <h4>
-              <%= @movie['year'] %>
-            </h4>
-
-           <p><%= @movie['plot'] %></p>
-          <p style='font-style: normal'><%= @movie['runtime'].first %></p>
-
+           </h1>
+           <p style="font-family: 'Inconsolata"><%= @movie['plot'] %></p>
+            <ul style="list-style-type: none">
+              <li>Year: <%= @movie['year'] %></li>
+              <li>Run time: <%= @movie['runtime'].first %></li>
+            </ul>
 
 
         <% else params[:type] == 'actor' %>
@@ -46,3 +47,5 @@
       </div>
     <% end %>
   <% end %>
+</body>
+</html>

@@ -9,10 +9,16 @@
 
 
           def movie_query
-            cookies[:movie_query] = params[:movie_query] if params[:remember_search]
-
             @movie_query = params[:movie_query]
 
+            if params[:remember_search]
+              cookies[:previous_movie_query] = params[:movie_query]
+              cookies[:previous_search_type] = params[:search_type]
+
+            else
+              cookies.delete(:movie_query)
+              cookies.delete(:search_type)
+            end
             if @movie_query.present?
 
               @uri = if params[:search_type] == 'title'

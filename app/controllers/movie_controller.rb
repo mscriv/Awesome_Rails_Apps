@@ -12,6 +12,7 @@
             @movie_query = params[:movie_query]
 
             if params[:remember_search]
+              movie_query = cookies[:movie_query]
               cookies[:previous_movie_query] = params[:movie_query]
               cookies[:previous_search_type] = params[:search_type]
 

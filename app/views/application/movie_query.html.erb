@@ -17,13 +17,14 @@
 </form>
 
 
-      <% if params[:remember_search].present? %>
     <h5>
       Previous search: "<%= cookies[:previous_movie_query] %>."
       <%= link_to "Search Again?", movie_query_path(movie_query: cookies[:previous_movie_query], search_type: cookies[:previous_search_type]), method: :post %>
 
     </h5>
-    <% end %>
+
+
+
 <% if @movie %>
   <% if params[:search_type] == 'title' %>
 

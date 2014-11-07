@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'home/set_cookies'
+
+  get 'home/show_cookies'
+
+  get 'home/delete_cookies'
+
   get 'credit_cards/open'
   get 'credit_cards/debit'
   get 'credit_cards/credit'
